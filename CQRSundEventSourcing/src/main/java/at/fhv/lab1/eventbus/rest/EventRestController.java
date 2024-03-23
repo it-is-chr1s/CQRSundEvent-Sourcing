@@ -17,7 +17,7 @@ public class EventRestController {
     @PostMapping(value = "/event", consumes = "application/json")
     public boolean addEvent(@RequestBody Event event) {
         // TODO: process event in repository
-        repository.processEvent(event);
+        //repository.processEvent(event);
         System.out.println("Event received: " + event);
         return true;
     }

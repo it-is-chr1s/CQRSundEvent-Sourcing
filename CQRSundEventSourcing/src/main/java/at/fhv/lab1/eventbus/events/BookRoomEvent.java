@@ -1,6 +1,6 @@
 package at.fhv.lab1.eventbus.events;
 
-public class BookRoomEvent implements Event{
+public class BookRoomEvent extends Event{
     private long duration;
     private int roomNumber;
     private String customer;
@@ -46,10 +46,11 @@ public class BookRoomEvent implements Event{
 
     @Override
     public String toString() {
-        return "BookRoomCommand{" +
+        return "BookRoomEvent{" +
                 "duration=" + duration +
                 ", roomNumber=" + roomNumber +
                 ", customer='" + customer + '\'' +
+                ", timestamp=" + timestamp +
                 '}';
     }
 }

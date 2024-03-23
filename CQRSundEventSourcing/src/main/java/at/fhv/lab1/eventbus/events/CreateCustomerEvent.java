@@ -1,6 +1,6 @@
 package at.fhv.lab1.eventbus.events;
 
-public class CreateCustomerEvent implements Event{
+public class CreateCustomerEvent extends Event{
     private String name;
     private String address;
     private String birthday;

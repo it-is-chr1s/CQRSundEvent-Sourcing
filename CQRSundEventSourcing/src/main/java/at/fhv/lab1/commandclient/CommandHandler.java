@@ -23,9 +23,9 @@ public class CommandHandler {
     public ResponseEntity<String> createCustomer(@RequestBody CreateCustomerEvent createCustomerEvent){
         System.out.println("Received Post request: " + createCustomerEvent);
 
-        if(false){ //validation
+        if(true){ //validation
             //placeholder: save in database
-            //publisher.publishEvent(createCustomerEvent);
+            publisher.publishEvent(createCustomerEvent);
 
             return ResponseEntity.ok("Customer has been created.");
         }else{
@@ -37,9 +37,9 @@ public class CommandHandler {
     public ResponseEntity<String> bookRoom(@RequestBody BookRoomEvent bookRoomEvent){
         System.out.println("Received Post request: " + bookRoomEvent);
 
-        if(false){ //validation
+        if(true){ //validation
             //placeholder: save in database
-            //publisher.publishEvent(bookRoomEvent);
+            publisher.publishEvent(bookRoomEvent);
 
             return ResponseEntity.ok("The room has been booked.");
         }else{
@@ -51,9 +51,9 @@ public class CommandHandler {
     public ResponseEntity<String> cancelBooking(@RequestBody CancelBookingEvent cancelBookingEvent){
         System.out.println("Received Post request: " + cancelBookingEvent);
 
-        if(false){ //validation
+        if(true){ //validation
             //placeholder: save in database
-            //publisher.publishEvent(cancelBookingEvent);
+            publisher.publishEvent(cancelBookingEvent);
 
             return ResponseEntity.ok("The reservation number has been canceled.");
         }else{

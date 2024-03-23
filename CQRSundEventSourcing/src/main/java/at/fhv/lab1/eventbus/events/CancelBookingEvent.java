@@ -1,6 +1,6 @@
 package at.fhv.lab1.eventbus.events;
 
-public class CancelBookingEvent implements Event{
+public class CancelBookingEvent extends Event{
     private int reservationNumber;
     private long timestamp;
 
@@ -28,8 +28,9 @@ public class CancelBookingEvent implements Event{
 
     @Override
     public String toString() {
-        return "CancelBookingCommand{" +
+        return "CancelBookingEvent{" +
                 "reservationNumber=" + reservationNumber +
+                ", timestamp=" + timestamp +
                 '}';
     }
 }
