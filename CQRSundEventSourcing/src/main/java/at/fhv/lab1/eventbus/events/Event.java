@@ -10,22 +10,42 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         visible = true
 )
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = BookRoomEvent.class, name = "BookRoomEvent"),
-        @JsonSubTypes.Type(value = CancelBookingEvent.class, name = "CancelBookingEvent"),
-        @JsonSubTypes.Type(value = CreateCustomerEvent.class, name = "CreateCustomerEvent")
+        @JsonSubTypes.Type(value = BookRoomEvent.class, name = "BOOK_ROOM_EVENT"),
+        @JsonSubTypes.Type(value = CancelBookingEvent.class, name = "CANCEL_BOOKING_EVENT"),
+        @JsonSubTypes.Type(value = CreateCustomerEvent.class, name = "CREATE_CUSTOMER_EVENT")
 })
 public abstract class Event {
-    private String eventType;
+    private EventType eventType;
+    private long timestamp;
+    private int eventID;
 
-    public void setEventType(String eventType) {
-        this.eventType = eventType;
+    public Event(int id){
+        timestamp = System.currentTimeMillis();
+        eventID = id;
     }
 
-    public String getEventType(){
+    public EventType getEventType() {
         return eventType;
     }
 
-    public abstract long getTimestamp();
-    public abstract void setTimestamp(long timestamp);
+    public void setEventType(EventType eventType) {
+        this.eventType = eventType;
+    }
+
+    public void setEventID(int id){
+        this.eventID = id;
+    }
+
+    public int getEventID(){
+        return eventID;
+    }
+
+    public long getTimestamp(){
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp){
+        this.timestamp = timestamp;
+    }
 }
 

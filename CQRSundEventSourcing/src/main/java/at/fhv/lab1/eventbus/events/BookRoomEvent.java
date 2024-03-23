@@ -4,10 +4,10 @@ public class BookRoomEvent extends Event{
     private long duration;
     private int roomNumber;
     private String customer;
-    private long timestamp;
+    private static int counter = 0;
 
     public BookRoomEvent(){
-        timestamp = System.currentTimeMillis();
+        super(counter++);
     }
 
     public long getDuration() {
@@ -35,22 +35,13 @@ public class BookRoomEvent extends Event{
     }
 
     @Override
-    public long getTimestamp() {
-        return timestamp;
-    }
-
-    @Override
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    @Override
     public String toString() {
         return "BookRoomEvent{" +
                 "duration=" + duration +
                 ", roomNumber=" + roomNumber +
                 ", customer='" + customer + '\'' +
-                ", timestamp=" + timestamp +
+                ", timestamp=" + getTimestamp() +
+                ", id=" + getEventID() +
                 '}';
     }
 }

@@ -4,10 +4,10 @@ public class CreateCustomerEvent extends Event{
     private String name;
     private String address;
     private String birthday;
-    private long timestamp;
+    private static int counter = 0;
 
     public CreateCustomerEvent(){
-        this.timestamp = System.currentTimeMillis();
+        super(counter++);
     }
 
     public String getName() {
@@ -35,22 +35,13 @@ public class CreateCustomerEvent extends Event{
     }
 
     @Override
-    public long getTimestamp() {
-        return timestamp;
-    }
-
-    @Override
-    public void setTimestamp(long timestamp){
-        this.timestamp = timestamp;
-    }
-
-    @Override
     public String toString() {
         return "CreateCustomerEvent{" +
                 "name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", birthday='" + birthday + '\'' +
-                ", timestamp=" + timestamp +
+                ", timestamp=" + getTimestamp() +
+                ", id=" + getEventID() +
                 '}';
     }
 }
