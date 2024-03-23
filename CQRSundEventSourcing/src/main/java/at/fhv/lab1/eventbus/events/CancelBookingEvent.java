@@ -1,7 +1,12 @@
-package at.fhv.lab1.commandclient.commands;
+package at.fhv.lab1.eventbus.events;
 
-public class CancelBookingCommand extends Command{
+public class CancelBookingEvent implements Event{
     private int reservationNumber;
+    private long timestamp;
+
+    public CancelBookingEvent(){
+        this.timestamp = System.currentTimeMillis();
+    }
 
     public int getReservationNumber() {
         return reservationNumber;
@@ -11,8 +16,14 @@ public class CancelBookingCommand extends Command{
         this.reservationNumber = reservationNumber;
     }
 
-    boolean validate(){
-        return true;
+    @Override
+    public long getTimestamp(){
+        return timestamp;
+    }
+
+    @Override
+    public void setTimestamp(long timestamp){
+        this.timestamp = timestamp;
     }
 
     @Override

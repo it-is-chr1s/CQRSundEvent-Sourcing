@@ -1,9 +1,14 @@
-package at.fhv.lab1.commandclient.commands;
+package at.fhv.lab1.eventbus.events;
 
-public class BookRoomCommand extends Command{
+public class BookRoomEvent implements Event{
     private long duration;
     private int roomNumber;
     private String customer;
+    private long timestamp;
+
+    public BookRoomEvent(){
+        timestamp = System.currentTimeMillis();
+    }
 
     public long getDuration() {
         return duration;
@@ -29,8 +34,14 @@ public class BookRoomCommand extends Command{
         this.customer = customer;
     }
 
-    boolean validate(){
-        return true;
+    @Override
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    @Override
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override
