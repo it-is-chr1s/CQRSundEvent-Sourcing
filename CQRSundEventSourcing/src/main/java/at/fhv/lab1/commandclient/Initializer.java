@@ -21,7 +21,7 @@ public class Initializer {
                  new AddRoomEvent(8, 4, true),
                  new AddRoomEvent(9, 4, true),
                  new AddRoomEvent(10, 4, false),
-                 new CreateCustomerEvent("M&M", "Max Mustermann", "Musterstraße", "01-01-1974"),
+                 new CreateCustomerEvent("M&M", "Max Mustermann", "Musterstraße", System.currentTimeMillis()),
                  new BookRoomEvent(System.currentTimeMillis(), System.currentTimeMillis() + Duration.ofDays(2).toMillis(), 2, "M&M")
          };
 

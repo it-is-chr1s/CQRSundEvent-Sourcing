@@ -13,13 +13,13 @@ public class Customer {
     @Column(name = "address")
     private String address;
     @Column(name = "birthday")
-    private String birthday;
+    private long birthday;
 
     public Customer(){
 
     }
 
-    public Customer(String username, String name, String address, String birthday) {
+    public Customer(String username, String name, String address, long birthday) {
         this.username = username;
         this.name = name;
         this.address = address;
@@ -38,7 +38,7 @@ public class Customer {
         return address;
     }
 
-    public String getBirthday() {
+    public long getBirthday() {
         return birthday;
     }
 

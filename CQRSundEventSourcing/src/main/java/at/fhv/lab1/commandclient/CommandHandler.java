@@ -5,12 +5,14 @@ import at.fhv.lab1.eventbus.events.CancelBookingEvent;
 import at.fhv.lab1.eventbus.events.CreateCustomerEvent;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @Component
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class CommandHandler {
 
     private final EventPublisher publisher;

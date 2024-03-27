@@ -11,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -79,6 +80,7 @@ public class Controller {
     }
 
     @PostMapping("/deleteBooking")
+    @Transactional
     public ResponseEntity<?> deleteBooking(@RequestParam int reservationNumber) {
         Booking booking = bookingRepository.findByReservationNumber(reservationNumber);
 
@@ -86,7 +88,7 @@ public class Controller {
             return ResponseEntity.notFound().build();
         }
 
-        bookingRepository.delete(booking);
+        bookingRepository.deleteByReservationNumber(booking.getReservationNumber());
 
         return ResponseEntity.ok("Booking with reservation number " + reservationNumber + " deleted successfully.");
     }

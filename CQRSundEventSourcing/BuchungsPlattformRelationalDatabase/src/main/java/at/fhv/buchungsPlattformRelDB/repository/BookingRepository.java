@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface BookingRepository extends CrudRepository<Booking, Long> {
     Booking findByReservationNumber(int reservationNumber);
     boolean existsByReservationNumber(int reservationNumber);
+    void deleteByReservationNumber(int reservationNumber);
 }

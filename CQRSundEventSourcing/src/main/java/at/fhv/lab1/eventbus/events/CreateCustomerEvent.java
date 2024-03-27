@@ -4,7 +4,7 @@ public class CreateCustomerEvent extends Event{
     private String username;
     private String name;
     private String address;
-    private String birthday;
+    private long birthday;
     private static int counter = 0;
 
     public CreateCustomerEvent(){
@@ -12,7 +12,7 @@ public class CreateCustomerEvent extends Event{
         eventType = EventType.CREATE_CUSTOMER_EVENT;
     }
 
-    public CreateCustomerEvent(String username, String name, String address, String birthday) {
+    public CreateCustomerEvent(String username, String name, String address, long birthday) {
         this();
         this.name = name;
         this.address = address;
@@ -40,11 +40,11 @@ public class CreateCustomerEvent extends Event{
         this.address = address;
     }
 
-    public String getBirthday() {
+    public long getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(long birthday) {
         this.birthday = birthday;
     }
 
