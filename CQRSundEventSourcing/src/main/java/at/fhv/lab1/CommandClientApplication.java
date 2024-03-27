@@ -1,5 +1,6 @@
 package at.fhv.lab1;
 
+import at.fhv.lab1.commandclient.CommandHandler;
 import at.fhv.lab1.eventbus.events.Event;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +17,7 @@ public class CommandClientApplication {
 
     private final EventPublisher publisher;
 
-    public CommandClientApplication(EventPublisher publisher) {
+    public CommandClientApplication(EventPublisher publisher, CommandHandler handler) {
         this.publisher = publisher;
     }
 
@@ -24,14 +25,18 @@ public class CommandClientApplication {
         SpringApplication.run(CommandClientApplication.class, args);
     }
 
+
+
     @Bean
     public CommandLineRunner run() throws Exception {
         return args -> {
-            Event event = new Event();
+           /* Event event = new Event();
             event.setContent("This is the content!");
             event.setCustomer("Customer1");
             event.setTimestamp(System.currentTimeMillis());
-            System.out.println("Result: " + publisher.publishEvent(event));
+            System.out.println("Result: " + publisher.publishEvent(event));*/
         };
     }
+
+
 }

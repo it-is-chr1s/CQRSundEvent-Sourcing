@@ -9,10 +9,18 @@ import reactor.core.publisher.Mono;
 @Component
 public class EventPublisher {
 
+    private static EventPublisher instance;
+
     private final WebClient localApiClient = WebClient.create("http://localhost:8080");
 
+    public static EventPublisher initialize(){
+        if(instance == null)
+            instance = new EventPublisher();
 
-    public EventPublisher() {
+        return instance;
+    }
+
+    private EventPublisher() {
     }
 
     public Boolean publishEvent(Event event) {

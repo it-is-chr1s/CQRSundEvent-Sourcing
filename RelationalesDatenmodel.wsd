@@ -1,0 +1,37 @@
+@startuml
+
+title Buchungsplattform - Relationales Modell
+
+skinparam nodesep 200
+skinparam ranksep 150
+
+skinparam linetype ortho
+
+hide circle
+hide empty members
+
+entity room{
+    number <<CK>> : int
+    number_of_beds : int
+    bath : boolean
+}
+
+entity booking{
+    reservation_number <<CK>>: int
+    room_number <<FK>> : int
+    username <<FK>> : String
+    start_date : dateTime
+    end_date  : int
+}
+
+entity customer{
+    username <<CK>> : String
+    name : String
+    adress : String
+    birthday : DateTime
+}
+
+room <- booking : "(number):\n(room_number)"
+booking -> customer : "(username):\n(username)"
+
+@enduml

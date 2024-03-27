@@ -1,0 +1,35 @@
+@startuml
+
+title Buchungsplattform - Konzeptionelles Modell
+
+skinparam nodesep 200
+skinparam ranksep 150
+
+skinparam linetype ortho
+
+hide circle
+hide empty members
+
+entity Room{
+    Number <<CK>> : int
+    NumberOfBeds : int
+    Bath : boolean
+}
+
+entity Booking{
+    ReservationNumber <<CK>>: int
+    StartDate : DateTime
+    EndDate  : DateTime
+}
+
+entity Customer{
+    Username <<CK>> : String
+    Name : String
+    Adress : String
+    Birthday : DateTime
+}
+
+Room "1" - "0..*" Booking
+Booking "0..*" - "1" Customer
+
+@enduml

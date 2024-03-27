@@ -1,41 +1,49 @@
 package at.fhv.lab1.eventbus.events;
 
-public class Event {
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-    private String customer;
+@JsonTypeInfo(
+        include = JsonTypeInfo.As.EXISTING_PROPERTY,
+        property = "eventType",
+        use = JsonTypeInfo.Id.NAME,
+        visible = true
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = BookRoomEvent.class, name = "BOOK_ROOM_EVENT"),
+        @JsonSubTypes.Type(value = CancelBookingEvent.class, name = "CANCEL_BOOKING_EVENT"),
+        @JsonSubTypes.Type(value = CreateCustomerEvent.class, name = "CREATE_CUSTOMER_EVENT"),
+        @JsonSubTypes.Type(value = DeleteAll.class, name = "DELETE_ALL_EVENT"),
+        @JsonSubTypes.Type(value = AddRoomEvent.class, name = "ADD_ROOM_EVENT")
+})
+public abstract class Event {
+    protected EventType eventType;
     private long timestamp;
-    private String content;
+    private int eventID;
 
-    public String getCustomer() {
-        return customer;
+    public Event(int id){
+        timestamp = System.currentTimeMillis();
+        eventID = id;
     }
 
-    public void setCustomer(String customer) {
-        this.customer = customer;
+    public EventType getEventType() {
+        return eventType;
     }
 
-    public long getTimestamp() {
+    public void setEventID(int id){
+        this.eventID = id;
+    }
+
+    public int getEventID(){
+        return eventID;
+    }
+
+    public long getTimestamp(){
         return timestamp;
     }
 
-    public void setTimestamp(long timestamp) {
+    public void setTimestamp(long timestamp){
         this.timestamp = timestamp;
     }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    @Override
-    public String toString() {
-        return "Event{" +
-                "customer='" + customer + '\'' +
-                ", timestamp=" + timestamp +
-                ", content='" + content + '\'' +
-                '}';
-    }
 }
+
