@@ -1,9 +1,6 @@
 package at.fhv.lab1.eventbus;
 
-import at.fhv.lab1.eventbus.events.BookRoomEvent;
-import at.fhv.lab1.eventbus.events.CancelBookingEvent;
-import at.fhv.lab1.eventbus.events.CreateCustomerEvent;
-import at.fhv.lab1.eventbus.events.Event;
+import at.fhv.lab1.eventbus.events.*;
 import at.fhv.lab1.eventbus.subscriber.Broker;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +13,7 @@ public class EventRepository {
     private final List<Event> bookRoomEvents = new ArrayList<>();
     private final List<Event> cancelBookingEvents = new ArrayList<>();
     private final List<Event> createCustomerEvents = new ArrayList<>();
+    private final List<Event> addRoomEvents = new ArrayList<>();
     private final Broker broker = Broker.initialise();
 
     public void processEvent(Event event) {
@@ -25,6 +23,8 @@ public class EventRepository {
             cancelBookingEvents.add(event);
         }else if(event instanceof CreateCustomerEvent){
             createCustomerEvents.add(event);
+        }else if(event instanceof AddRoomEvent){
+            addRoomEvents.add(event);
         }
 
         broker.publish(event);

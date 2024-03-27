@@ -6,6 +6,12 @@ public class CancelBookingEvent extends Event{
 
     public CancelBookingEvent(){
         super(counter++);
+        eventType = EventType.CANCEL_BOOKING_EVENT;
+    }
+
+    public CancelBookingEvent(int reservationNumber) {
+        this();
+        this.reservationNumber = reservationNumber;
     }
 
     public int getReservationNumber() {

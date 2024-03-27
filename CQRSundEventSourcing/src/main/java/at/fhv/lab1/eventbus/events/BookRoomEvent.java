@@ -1,21 +1,42 @@
 package at.fhv.lab1.eventbus.events;
 
 public class BookRoomEvent extends Event{
-    private long duration;
+    private long startDate;
+    private long endDate;
     private int roomNumber;
     private String customer;
+
+    private int reservationNumber;
     private static int counter = 0;
 
     public BookRoomEvent(){
         super(counter++);
+        reservationNumber = getEventID();
+        eventType = EventType.BOOK_ROOM_EVENT;
     }
 
-    public long getDuration() {
-        return duration;
+    public BookRoomEvent(long startDate, long endDate, int roomNumber, String customer) {
+        this();
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.roomNumber = roomNumber;
+        this.customer = customer;
     }
 
-    public void setDuration(long duration) {
-        this.duration = duration;
+    public long getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(long startDate) {
+        this.startDate = startDate;
+    }
+
+    public long getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(long endDate) {
+        this.endDate = endDate;
     }
 
     public int getRoomNumber() {
@@ -37,11 +58,13 @@ public class BookRoomEvent extends Event{
     @Override
     public String toString() {
         return "BookRoomEvent{" +
-                "duration=" + duration +
+                "startDate=" + startDate +
+                ", endDate=" + endDate +
                 ", roomNumber=" + roomNumber +
                 ", customer='" + customer + '\'' +
                 ", timestamp=" + getTimestamp() +
                 ", id=" + getEventID() +
+                ", reservationNumber=" + reservationNumber +
                 '}';
     }
 }

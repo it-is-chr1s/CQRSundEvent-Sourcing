@@ -15,18 +15,16 @@ public class CommandHandler {
 
     private final EventPublisher publisher;
 
-    public CommandHandler(EventPublisher publisher){
-        this.publisher = publisher;
+    public CommandHandler(RelationalDatabase db){
+        this.publisher = EventPublisher.initialize();
     }
 
     @PostMapping(value = "/createCustomer", consumes = "application/json")
     public ResponseEntity<String> createCustomer(@RequestBody CreateCustomerEvent createCustomerEvent){
         System.out.println("Received Post request: " + createCustomerEvent);
 
-        if(true){ //validation
-            //placeholder: save in database
+        if(RelationalDatabase.save(createCustomerEvent)){
             publisher.publishEvent(createCustomerEvent);
-
             return ResponseEntity.ok("Customer has been created.");
         }else{
             return ResponseEntity.unprocessableEntity().body("Customer hasn't been created.");
@@ -37,10 +35,8 @@ public class CommandHandler {
     public ResponseEntity<String> bookRoom(@RequestBody BookRoomEvent bookRoomEvent){
         System.out.println("Received Post request: " + bookRoomEvent);
 
-        if(true){ //validation
-            //placeholder: save in database
+        if(RelationalDatabase.save(bookRoomEvent)){
             publisher.publishEvent(bookRoomEvent);
-
             return ResponseEntity.ok("The room has been booked.");
         }else{
             return ResponseEntity.unprocessableEntity().body("The room hasn't been booked.");
@@ -51,13 +47,19 @@ public class CommandHandler {
     public ResponseEntity<String> cancelBooking(@RequestBody CancelBookingEvent cancelBookingEvent){
         System.out.println("Received Post request: " + cancelBookingEvent);
 
-        if(true){ //validation
-            //placeholder: save in database
+        if(RelationalDatabase.deleteBooking(cancelBookingEvent.getReservationNumber())){
             publisher.publishEvent(cancelBookingEvent);
 
             return ResponseEntity.ok("The reservation number has been canceled.");
         }else{
             return ResponseEntity.unprocessableEntity().body("The reservation number hasn't been canceled.");
         }
+    }
+
+    @PostMapping(value = "/initializeDatabase")
+    public String initialiseDatabase(){
+        Initializer.basicDataset();
+
+        return "The Database has been initialised with the basic Dataset";
     }
 }

@@ -48,26 +48,34 @@ public class Controller {
     }
 
     /*
-    [
-    {"number": 1, "numberOfBeds": 2, "bath": true},
-    {"number": 2, "numberOfBeds": 2, "bath": true},
-    ...
-    ]
+    {"number": 2, "numberOfBeds": 2, "bath": true}
      */
-    @PostMapping("/updateRooms")
-    public List<Room> updateRooms(@RequestBody List<Room> rooms){
-        Iterable<Room> savedRoomsIterable = roomRepository.saveAll(rooms);
-
-        List<Room> savedRooms = new ArrayList<>();
-        savedRoomsIterable.forEach(savedRooms::add);
-        return savedRooms;
+    @PostMapping("/updateRoom")
+    public Room updateRooms(@RequestBody Room room){
+        return roomRepository.save(room);
     }
 
+    @PostMapping("/existsByRoomNumber")
+    public boolean existsByRoomNumber(@RequestParam int number){
+        return roomRepository.existsByNumber(number);
+    }
+
+    /*
+    {
+        "reservationNumber": 12345,
+            "startDate": "2024-03-27",
+            "endDate": "2024-03-30"
+    }*/
     @PostMapping("/updateBooking")
     public Booking bookRoom(@RequestParam int roomNumber, @RequestParam String username,  @RequestBody Booking booking){
         booking.setRoom(roomRepository.findByNumber(roomNumber));
         booking.setCustomer(customerRepository.findByUsername(username));
         return bookingRepository.save(booking);
+    }
+
+    @PostMapping("/existsByReservationNumber")
+    public boolean existsByReservationNumber(@RequestParam int reservationNumber){
+        return bookingRepository.existsByReservationNumber(reservationNumber);
     }
 
     @PostMapping("/deleteBooking")
@@ -81,5 +89,12 @@ public class Controller {
         bookingRepository.delete(booking);
 
         return ResponseEntity.ok("Booking with reservation number " + reservationNumber + " deleted successfully.");
+    }
+
+    @PostMapping("/flushDB")
+    public void flushDB(){
+        bookingRepository.deleteAll();
+        customerRepository.deleteAll();
+        roomRepository.deleteAll();
     }
 }

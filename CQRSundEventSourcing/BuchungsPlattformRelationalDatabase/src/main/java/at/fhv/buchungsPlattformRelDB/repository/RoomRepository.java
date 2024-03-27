@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface RoomRepository extends CrudRepository<Room, Long> {
     Room findByNumber(int number);
+    boolean existsByNumber(int number);
 }

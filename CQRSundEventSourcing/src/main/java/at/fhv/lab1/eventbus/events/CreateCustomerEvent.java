@@ -1,6 +1,7 @@
 package at.fhv.lab1.eventbus.events;
 
 public class CreateCustomerEvent extends Event{
+    private String username;
     private String name;
     private String address;
     private String birthday;
@@ -8,6 +9,19 @@ public class CreateCustomerEvent extends Event{
 
     public CreateCustomerEvent(){
         super(counter++);
+        eventType = EventType.CREATE_CUSTOMER_EVENT;
+    }
+
+    public CreateCustomerEvent(String username, String name, String address, String birthday) {
+        this();
+        this.name = name;
+        this.address = address;
+        this.birthday = birthday;
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getName() {

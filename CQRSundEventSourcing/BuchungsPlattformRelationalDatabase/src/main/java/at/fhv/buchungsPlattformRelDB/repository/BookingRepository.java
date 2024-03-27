@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BookingRepository extends CrudRepository<Booking, Long> {
     Booking findByReservationNumber(int reservationNumber);
+    boolean existsByReservationNumber(int reservationNumber);
 }
