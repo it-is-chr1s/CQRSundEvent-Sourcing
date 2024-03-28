@@ -71,6 +71,7 @@ public class Controller {
     public Booking bookRoom(@RequestParam int roomNumber, @RequestParam String username,  @RequestBody Booking booking){
         booking.setRoom(roomRepository.findByNumber(roomNumber));
         booking.setCustomer(customerRepository.findByUsername(username));
+        System.out.println(booking);
         return bookingRepository.save(booking);
     }
 

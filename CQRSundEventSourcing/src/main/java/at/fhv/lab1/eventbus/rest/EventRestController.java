@@ -2,9 +2,8 @@ package at.fhv.lab1.eventbus.rest;
 
 import at.fhv.lab1.eventbus.EventRepository;
 import at.fhv.lab1.eventbus.events.Event;
-import at.fhv.lab1.eventbus.subscriber.Broker;
-import at.fhv.lab1.eventbus.subscriber.Subscriber;
-import org.springframework.beans.factory.annotation.Autowired;
+import at.fhv.lab1.eventbus.publish_subcribe.Broker;
+import at.fhv.lab1.eventbus.publish_subcribe.Subscriber;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,9 +24,8 @@ public class EventRestController {
         return true;
     }
 
-    @PostMapping(value = "/subcribe", consumes = "application/json")
-    public boolean subscribe(@RequestBody Subscriber subscriber){
-        broker.subcribe(subscriber);
-        return true;
+    @PostMapping(value = "/subscribe", consumes = "application/json")
+    public void subscribe(@RequestBody Subscriber subscriber){
+        broker.subscribe(subscriber);
     }
 }

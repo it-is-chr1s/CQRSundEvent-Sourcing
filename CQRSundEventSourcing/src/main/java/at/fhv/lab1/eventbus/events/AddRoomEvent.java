@@ -1,15 +1,17 @@
 package at.fhv.lab1.eventbus.events;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class AddRoomEvent extends Event{
 
-    private static int counter = 0;
+    private static final AtomicInteger counter = new AtomicInteger(0);
 
     private int number;
     private int numberOfBeds;
     private boolean bath;
 
     public AddRoomEvent(){
-        super(counter++);
+        super(counter.getAndIncrement());
         eventType = EventType.ADD_ROOM_EVENT;
     }
 
@@ -50,6 +52,7 @@ public class AddRoomEvent extends Event{
                 "number=" + number +
                 ", numberOfBeds=" + numberOfBeds +
                 ", bath=" + bath +
+                " id=" + getEventID() +
                 '}';
     }
 }

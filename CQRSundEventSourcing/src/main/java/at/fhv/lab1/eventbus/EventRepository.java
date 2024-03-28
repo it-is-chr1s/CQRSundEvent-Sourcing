@@ -1,7 +1,7 @@
 package at.fhv.lab1.eventbus;
 
 import at.fhv.lab1.eventbus.events.*;
-import at.fhv.lab1.eventbus.subscriber.Broker;
+import at.fhv.lab1.eventbus.publish_subcribe.Broker;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

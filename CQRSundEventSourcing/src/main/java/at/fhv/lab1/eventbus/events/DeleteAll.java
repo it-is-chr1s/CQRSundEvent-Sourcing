@@ -1,11 +1,13 @@
 package at.fhv.lab1.eventbus.events;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class DeleteAll extends Event{
 
-    private static int counter;
+    private static final AtomicInteger counter = new AtomicInteger(0);
 
     public DeleteAll(){
-        super(counter++);
+        super(counter.getAndIncrement());
         eventType = EventType.DELETE_ALL_EVENT;
     }
 

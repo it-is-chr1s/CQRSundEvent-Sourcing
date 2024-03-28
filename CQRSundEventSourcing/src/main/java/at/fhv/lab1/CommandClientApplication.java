@@ -15,28 +15,8 @@ import at.fhv.lab1.commandclient.EventPublisher;
 @ComponentScan("at.fhv.lab1.commandclient")
 public class CommandClientApplication {
 
-    private final EventPublisher publisher;
-
-    public CommandClientApplication(EventPublisher publisher, CommandHandler handler) {
-        this.publisher = publisher;
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(CommandClientApplication.class, args);
     }
-
-
-
-    @Bean
-    public CommandLineRunner run() throws Exception {
-        return args -> {
-           /* Event event = new Event();
-            event.setContent("This is the content!");
-            event.setCustomer("Customer1");
-            event.setTimestamp(System.currentTimeMillis());
-            System.out.println("Result: " + publisher.publishEvent(event));*/
-        };
-    }
-
 
 }

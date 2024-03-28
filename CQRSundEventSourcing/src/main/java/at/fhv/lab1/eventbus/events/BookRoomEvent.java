@@ -1,17 +1,19 @@
 package at.fhv.lab1.eventbus.events;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class BookRoomEvent extends Event{
     private long startDate;
     private long endDate;
     private int roomNumber;
     private String customer;
 
-    private int reservationNumber;
-    private static int counter = 0;
+    private final int reservationNumber;
+    private static final AtomicInteger counter = new AtomicInteger(0);
 
     public BookRoomEvent(){
-        super(counter++);
-        reservationNumber = getEventID();
+        super(counter.get());
+        reservationNumber = counter.getAndIncrement();
         eventType = EventType.BOOK_ROOM_EVENT;
     }
 
@@ -55,6 +57,9 @@ public class BookRoomEvent extends Event{
         this.customer = customer;
     }
 
+    public int getReservationNumber() {
+        return reservationNumber;
+    }
     @Override
     public String toString() {
         return "BookRoomEvent{" +

@@ -34,7 +34,7 @@ public class RelationalDatabase {
     public static boolean save(BookRoomEvent bookRoomEvent){
         Boolean exists = localApiClient
                 .post()
-                .uri("/existsByReservationNumber?reservationNumber={reservationNumber}", bookRoomEvent.getEventID())
+                .uri("/existsByReservationNumber?reservationNumber={reservationNumber}", bookRoomEvent.getReservationNumber())
                 .retrieve()
                 .bodyToMono(Boolean.class)
                 .block();
