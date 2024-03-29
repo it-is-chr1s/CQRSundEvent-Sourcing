@@ -22,6 +22,6 @@ public class CustomerWriteController extends WriteController {
     @PostMapping(value = "/CREATE_CUSTOMER_EVENT", consumes = "application/json")
     public void createCustomer(@RequestBody Customer customer){
         customerList.insert(customer);
-        System.out.println("Booking received: " + customer);
+        System.out.println("Customer received: " + customer);
     }
 }

@@ -9,17 +9,13 @@ import at.fhv.buchungsPlattformRelDB.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @SpringBootApplication
 @RestController
-public class Controller {
+public class RelDBApplication {
 
     @Autowired
     private CustomerRepository customerRepository;
@@ -29,7 +25,7 @@ public class Controller {
     private BookingRepository bookingRepository;
 
     public static void main(String[] args) {
-        SpringApplication.run(Controller.class, args);
+        SpringApplication.run(RelDBApplication.class, args);
     }
 
     /*{

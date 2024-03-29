@@ -43,7 +43,8 @@ public class CustomerList {
             }
 
             entry.next = current;
-            prev.next = entry;
+            if(prev != null)
+                prev.next = entry;
         }
     }
 
