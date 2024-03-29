@@ -16,6 +16,7 @@ public class BookingWriteController extends WriteController {
     public void run(String... args) throws InterruptedException {
         subscribe(EventType.BOOK_ROOM_EVENT, "http://localhost:8083", Thread.currentThread());
         subscribe(EventType.CANCEL_BOOKING_EVENT, "http://localhost:8083", Thread.currentThread());
+        subscribe(EventType.DELETE_ALL_EVENT, "http://localhost:8083", Thread.currentThread());
     }
 
     @PostMapping(value = "/BOOK_ROOM_EVENT", consumes = "application/json")
@@ -28,6 +29,12 @@ public class BookingWriteController extends WriteController {
     public void cancelBooking(@RequestBody Booking booking){
         bookingList.delete(booking.getReservationNumber());
         System.out.println("Booking cancelled: " + booking);
+    }
+
+    @PostMapping(value = "/DELETE_ALL_EVENT")
+    public void deleteAll(){
+        bookingList.deleteAll();
+        System.out.println("All bookings deleted.");
     }
 
 

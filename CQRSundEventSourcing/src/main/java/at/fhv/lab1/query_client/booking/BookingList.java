@@ -129,4 +129,9 @@ public class BookingList {
         return bookings;
     }
 
+    public void deleteAll(){
+        headStartDate = null;
+        headEndDate = null;
+    }
+
 }

@@ -92,4 +92,8 @@ public class RoomList {
 
         return false;
     }
+
+    public void deleteAll(){
+        head = null;
+    }
 }

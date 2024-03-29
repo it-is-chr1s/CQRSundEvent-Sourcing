@@ -51,15 +51,17 @@ export default function GetBookings(){
                 <table className="w-full">
                     <thead>
                         <tr>
-                            <th>Room Number</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
+                            <th>Reservation<br></br>Number</th>
+                            <th>Room<br></br>Number</th>
+                            <th>Start<br/>Date</th>
+                            <th>End<br/>Date</th>
                             <th>Customer</th>
                         </tr>
                     </thead>
                     <tbody>
                         {bookings.map((booking) => (
                             <tr>
+                                <td className="text-center">{booking.reservationNumber}</td>
                                 <td className="text-center">{booking.roomNumber}</td>
                                 <td className="text-center">{new Date(booking.startDate).toLocaleDateString()}</td>
                                 <td className="text-center">{new Date(booking.endDate).toLocaleDateString()}</td>

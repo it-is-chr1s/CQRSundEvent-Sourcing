@@ -91,8 +91,13 @@ public class RelDBApplication {
     }
 
     @PostMapping("/flushDB")
-    public void flushDB(){
+    public void flushDB() throws InterruptedException {
         bookingRepository.deleteAll();
+        while(bookingRepository.count() > 0) {
+            bookingRepository.deleteAll();
+            System.out.println("Waiting for bookings to be deleted");
+            Thread.sleep(100);
+        }
         customerRepository.deleteAll();
         roomRepository.deleteAll();
     }

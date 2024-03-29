@@ -17,11 +17,18 @@ public class CustomerWriteController extends WriteController {
     @Override
     public void run(String... args) throws InterruptedException {
         subscribe(EventType.CREATE_CUSTOMER_EVENT, "http://localhost:8084", Thread.currentThread());
+        subscribe(EventType.DELETE_ALL_EVENT, "http://localhost:8084", Thread.currentThread());
     }
 
     @PostMapping(value = "/CREATE_CUSTOMER_EVENT", consumes = "application/json")
     public void createCustomer(@RequestBody Customer customer){
         customerList.insert(customer);
         System.out.println("Customer received: " + customer);
+    }
+
+    @PostMapping(value = "/DELETE_ALL_EVENT")
+    public void deleteAll(){
+        customerList.deleteAll();
+        System.out.println("All customers deleted.");
     }
 }

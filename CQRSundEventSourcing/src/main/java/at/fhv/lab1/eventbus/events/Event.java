@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = BookRoomEvent.class, name = "BOOK_ROOM_EVENT"),
         @JsonSubTypes.Type(value = CancelBookingEvent.class, name = "CANCEL_BOOKING_EVENT"),
         @JsonSubTypes.Type(value = CreateCustomerEvent.class, name = "CREATE_CUSTOMER_EVENT"),
-        @JsonSubTypes.Type(value = DeleteAll.class, name = "DELETE_ALL_EVENT"),
+        @JsonSubTypes.Type(value = DeleteAllEvent.class, name = "DELETE_ALL_EVENT"),
         @JsonSubTypes.Type(value = AddRoomEvent.class, name = "ADD_ROOM_EVENT")
 })
 public abstract class Event {

@@ -31,7 +31,7 @@ public class CustomerList {
         Entry entry = new Entry(customer);
 
         if (head == null || entry.getUsername().compareTo(head.getUsername()) < 0) {
-            entry.next = null;
+            entry.next = head;
             head = entry;
         } else {
             Entry current = head;
@@ -74,5 +74,9 @@ public class CustomerList {
         }
 
         return customers;
+    }
+
+    public void deleteAll(){
+        head = null;
     }
 }

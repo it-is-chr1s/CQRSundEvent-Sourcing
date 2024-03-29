@@ -34,13 +34,13 @@ public abstract class WriteController implements CommandLineRunner {
 
                 if (response != null) {
                     if (response.statusCode() == HttpStatus.OK) {
-                        System.out.println("Subscribed successfully.");
+                        System.out.println("Subscribed successfully on " + eventType);
                         continue;
                     } else {
-                        System.out.println("Failed to subscribe. HTTP status code: " + response.statusCode() + "\nRetrying to subcribe in 5 seconds.");
+                        System.out.println("Failed to subscribe on" + eventType + ". HTTP status code: " + response.statusCode() + "\nRetrying to subcribe in 5 seconds.");
                     }
                 } else {
-                    System.out.println("Failed to subscribe. No response received.\nRetrying to subcribe in 5 seconds.");
+                    System.out.println("Failed to subscribe on" + eventType + ". No response received.\nRetrying to subcribe in 5 seconds.");
                 }
             }catch(WebClientRequestException e){
                 System.out.println("Error connecting to server: " + e.getMessage() + ". Retrying in 5 seconds.");

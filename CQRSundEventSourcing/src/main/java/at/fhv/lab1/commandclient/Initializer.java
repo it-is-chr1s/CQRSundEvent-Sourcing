@@ -10,7 +10,7 @@ public class Initializer {
 
     public static void basicDataset(){
          Event[] events = {
-                 new DeleteAll(),
+                 new DeleteAllEvent(),
                  new AddRoomEvent(1, 2, true),
                  new AddRoomEvent(2, 2, true),
                  new AddRoomEvent(3, 2, false),
@@ -34,7 +34,7 @@ public class Initializer {
                 if (RelationalDatabase.save((AddRoomEvent) event)) {
                     publisher.publishEvent(event);
                 }
-            }else if(event instanceof DeleteAll){
+            }else if(event instanceof DeleteAllEvent){
                 if (RelationalDatabase.flush()){
                     publisher.publishEvent(event);
                 }
