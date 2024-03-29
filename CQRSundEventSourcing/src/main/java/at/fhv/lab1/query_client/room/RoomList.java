@@ -46,7 +46,7 @@ public class RoomList {
             Entry current = head;
             Entry prev = null;
 
-            while (current != null && current.getNumberOfBeds() < entry.getNumberOfBeds()) {
+            while (current != null && current.getNumberOfBeds() <= entry.getNumberOfBeds()) {
                 prev = current;
                 current = current.next;
             }
@@ -72,7 +72,7 @@ public class RoomList {
         Entry current = head;
 
         while(current != null){
-            if(current.getNumberOfBeds() >= beds && !contains(current, bookings)){
+            if(current.getNumberOfBeds() >= beds && !contains(current, bookings, startDate, endDate)){
                 freeRooms.add(current);
             }
             current = current.next;
@@ -81,9 +81,11 @@ public class RoomList {
         return freeRooms;
     }
 
-    private boolean contains(Entry current, ArrayList<Booking> bookings){
+    private boolean contains(Entry current, ArrayList<Booking> bookings, long startDate, long endDate){
         for(Booking booking : bookings){
-            if(booking.getRoomNumber() == current.getNumber()){
+            if(booking.getRoomNumber() == current.getNumber()
+                    && ((booking.getEndDate() >= startDate && booking.getEndDate() <= endDate)
+                    || (booking.getStartDate() >= startDate && booking.getStartDate() <= endDate))){
                 return true;
             }
         }

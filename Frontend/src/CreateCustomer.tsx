@@ -31,26 +31,26 @@ export default function CreateCustomer(){
     }
 
     return (
-        <div>
+        <div className="py-2 px-4">
             <h2>Create Customer</h2>
             <form onSubmit={onFormSubmit}>
-                <label>
-                    <span>Username:</span>
+                <label className="mr-5">
+                    <span className='mr-2'>Username:</span>
                     <input type="text" name="username" required/>
                 </label>
-                <label>
-                    <span>Name:</span>
+                <label className="mr-5">
+                    <span className='mr-2'>Name:</span>
                     <input type="text" name="name" required/>
                 </label>
-                <label>
-                    <span>Address:</span>
+                <label className="mr-5">
+                    <span className='mr-2'>Address:</span>
                     <input type="text" name="address" required/>
                 </label>
-                <label>
-                    <span>Birthday:</span>
+                <label className="mr-5">
+                    <span className='mr-2'>Birthday:</span>
                     <input type="date" name="birthday" required/>
                 </label>
-                <button type="submit">Create Customer</button>
+                <button type="submit" className='bg-lime-500 hover:bg-lime-600'>Create Customer</button>
             </form>
         </div>
     );

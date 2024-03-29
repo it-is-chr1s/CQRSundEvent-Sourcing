@@ -38,7 +38,7 @@ public class BookingList {
             Entry current = headStartDate;
             Entry prev = null;
 
-            while(current != null && current.getStartDate() < entry.getStartDate()){
+            while(current != null && current.getStartDate() <= entry.getStartDate()){
                 prev = current;
                 current = current.nextStartDate;
             }

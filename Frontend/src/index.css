@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input{
+    @apply bg-gray-200;
+    @apply p-1;
+    @apply rounded-md;
+}
+
+input[type="number"]{
+    @apply w-16
+}
+
+label{
+    @apply text-gray-700;
+    @apply font-bold;
+}
+
+button{
+    @apply bg-lime-500;
+    @apply text-white;
+    @apply p-1;
+    @apply rounded-md;
+    @apply font-bold;
+}
+
+h1{
+    @apply text-center;
+    @apply font-bold;
+    @apply text-2xl;
+    @apply m-4;
+}
+
+h2{
+    @apply font-bold;
+    @apply text-lg;
+    @apply mb-2
+}

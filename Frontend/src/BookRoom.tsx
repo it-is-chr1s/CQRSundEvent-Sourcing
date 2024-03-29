@@ -33,26 +33,26 @@ export default function BookRoom(){
     }
 
     return (
-        <div>
+        <div className="py-2 px-4">
             <h2>Book Room</h2>
-            <form onSubmit={onFormSubmit}>
-                <label>
-                    <span>Start Date:</span>
+            <form onSubmit={onFormSubmit} className="flex">
+                <label className="mr-5">
+                    <span className='mr-2'>Start Date:</span>
                     <input type="date" name="startDate" required/>
                 </label>
-                <label>
-                    <span>End Date:</span>
+                <label className="mr-5">
+                    <span className='mr-2'>End Date:</span>
                     <input type="date" name="endDate" required/>
                 </label>
-                <label>
-                    <span>Room Number:</span>
+                <label className="mr-5">
+                    <span className='mr-2'>Room Number:</span>
                     <input type="number" name="roomNumber" required/>
                 </label>
-                <label>
-                    <span>Customer:</span>
+                <label className="mr-5">
+                    <span className='mr-2'>Customer:</span>
                     <input type="text" name="customer" required/>
                 </label>
-                <button type="submit">Book Room</button>
+                <button type="submit" className='bg-lime-500 hover:bg-lime-600'>Book Room</button>
             </form>
         </div>
     );

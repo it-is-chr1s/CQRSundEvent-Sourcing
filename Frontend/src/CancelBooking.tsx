@@ -1,3 +1,5 @@
+import {FormEvent} from 'react';
+
 export default function CancelBooking(){
     function onFormSubmit(event: FormEvent<HTMLFormElement>){
         event.preventDefault();
@@ -23,14 +25,14 @@ export default function CancelBooking(){
     }
 
     return (
-        <div>
+        <div className="py-2 px-4">
             <h2>Cancel Booking</h2>
-            <form onSubmit={onFormSubmit}>
-                <label>
-                    <span>Reservation Number:</span>
+            <form onSubmit={onFormSubmit} className="flex">
+                <label className="mr-5">
+                    <span className='mr-2'>Reservation Number:</span>
                     <input type="number" name="reservationNumber" required/>
                 </label>
-                <button type="submit">Cancel Booking</button>
+                <button type="submit" className='bg-lime-500 hover:bg-lime-600'>Cancel Booking</button>
             </form>
         </div>
     );
